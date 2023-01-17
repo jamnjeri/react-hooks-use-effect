@@ -1,13 +1,36 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    console.log("useEffect called");
-  });
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
 
-  console.log("Component rendering");
+  useEffect(() => 
+    // console.log("useEffect called")
+    document.title = text,
+  [text]
+  );
 
-  return <button>Click Me</button>;
+    useEffect(() => 
+      // console.log("useEffect called")
+      setTimeout(() =>setCount(0), 5000),
+    []
+    );
+
+  // console.log("Component rendering");
+
+  return (
+    <div>
+      <button onClick={() => setCount((count) => count +1)}>
+        I've been called {count} times
+        </button>
+      <input 
+        type="text" 
+        placeholder="Type away..."
+        value={text}
+        onChange = {(e) => setText(e.target.value)}
+      />
+    </div>
+  )
 }
 
 export default App;
